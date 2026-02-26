@@ -6,32 +6,33 @@ print("#                               #")
 print("#################################")
 print("")
 
-nombreCliente = input("Hola, por favor ingrese el nombre del cliente: ")
-precioProducto = float(input("Por favor ingrese el precio unitario del producto: "))
-cantidadProductos = float(input("Por favor, ingrese la cantidad de productos comprados: "))
-vip = input("Tiene membresia VIP? (s/n) ")
-
-if vip == "s":
+try:
+    nombreCliente = input("Hola, por favor ingrese el nombre del cliente: ")
+    precioProducto = float(input("Por favor ingrese el precio unitario del producto: "))
+    cantidadProductos = float(input("Por favor ingrese la cantidad de productos comprados: "))
+    vip = input("Tiene membresia VIP? (s/n) ").lower()
+    vipBool = (vip == "s")
+    
     subtotal = precioProducto * cantidadProductos
-    descuentoAplicado = subtotal * 0.1
-    totalPagar = subtotal - descuentoAplicado
-    print("")
-    print("*********************************************************")
-    print("*                  RECIBO DE LA COMPRA                  *")
-    print(f"Nombre:                                  {nombreCliente}")
-    print(f"Subtotal:                               ${subtotal:.2f}")
-    print(f"Valor del descuento aplicado (10%):     ${descuentoAplicado:.2f}")
-    print(f"Total final a pagar:                    ${totalPagar:.2f}")
-    print("*********************************************************")
+    descuento = 0.0
+    
+    if vipBool:
+        descuento = subtotal * 0.10
+    
+    totalPagar = subtotal - descuento
 
-else:
-    subtotal = precioProducto * cantidadProductos
-    print("")
-    print("*********************************************************")
-    print("*                  RECIBO DE LA COMPRA                  *")
-    print(f"Nombre:                                  {nombreCliente}")
-    print(f"Subtotal:                               ${subtotal:.2f}")
-    print(f"Valor del descuento aplicado (10%)       No aplica")
-    print(f"Total final a pagar:                    ${subtotal:.2f}")
-    print("*********************************************************")
+    print("\n" + "*" * 45)
+    print("* FACTURA DE LA COMPRA      ")
+    print(F"Nombre:                        {nombreCliente}")
+    print(f"Subtotal:                      ${subtotal:.2f}")
+        
+    if vipBool:
+        print(f"Descuento aplicado (10%):      ${descuento:.2f}")
+    else:
+        print(f"Descuento aplicado (10%):      No aplica")
+    
+    print(f"Total final a pagar:           ${totalPagar:.2f}")
+
+except ValueError:
+    print("Error: Por favor ingrese valores numericos validos para precio y cantidad.")
 
