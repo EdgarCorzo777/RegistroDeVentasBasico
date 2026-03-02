@@ -27,19 +27,31 @@ try:
         match productoPedir:
             case 1:
                 cantidad = int(input("Digite la cantidad de cajas huevos a comprar: "))
+                if cantidad <= 0:
+                    print("No se permiten valores menores o iguales que 0.")
+                    continue
                 cantHuevo += cantidad
                 totalHuevo += huevo * cantidad
+
             case 2:
                 cantidad = int(input("Digite la cantidad de litros de leche a comprar: "))
+                if cantidad <= 0:
+                    print("No se permiten valores menores o iguales que 0.")
+                    continue
                 cantLeche += cantidad
                 totalLeche += leche * cantidad
+
             case 3:
                 cantidad = int(input("Digite la cantidad de pan a comprar: "))
+                if cantidad <= 0:
+                    print("No se permiten valores menores o iguales que 0.")
+                    continue
                 cantPan += cantidad
                 totalPan += pan * cantidad
+
             case _:
                 print("No tenemos mas productos por el momento.")
-                break
+                continue
     
         decision = input("¿Desea seguir comprando (s/n)?:" ).lower()
         if decision == "s":
