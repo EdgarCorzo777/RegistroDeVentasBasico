@@ -1,7 +1,7 @@
 print("")
 print("#################################")
 print("#                               #")
-print("#        TIENDA DE ABU        #")
+print("#        TIENDA DE ABU          #")
 print("#                               #")
 print("#################################")
 print("")
@@ -26,14 +26,20 @@ try:
 
         match productoPedir:
             case 1:
-                cantHuevo = int(input("Digite la cantidad de cajas huevos a comprar: "))
-                totalHuevo = huevo * cantHuevo
+                cantidad = int(input("Digite la cantidad de cajas huevos a comprar: "))
+                cantHuevo += cantidad
+                totalHuevo += huevo * cantidad
             case 2:
-                cantLeche = int(input("Digite la cantidad de litros de leche a comprar: "))
-                totalLeche = leche * cantLeche
+                cantidad = int(input("Digite la cantidad de litros de leche a comprar: "))
+                cantLeche += cantidad
+                totalLeche += leche * cantidad
             case 3:
-                cantPan = int(input("Digite la cantidad de pan a comprar: "))
-                totalPan = pan * cantPan
+                cantidad = int(input("Digite la cantidad de pan a comprar: "))
+                cantPan += cantidad
+                totalPan += pan * cantidad
+            case _:
+                print("No tenemos mas productos por el momento.")
+                break
     
         decision = input("¿Desea seguir comprando (s/n)?:" ).lower()
         if decision == "s":
