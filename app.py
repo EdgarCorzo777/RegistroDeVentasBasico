@@ -35,4 +35,3 @@ try:
 
 except ValueError:
     print("Error: Por favor ingrese valores numericos validos para precio y cantidad.")
-
